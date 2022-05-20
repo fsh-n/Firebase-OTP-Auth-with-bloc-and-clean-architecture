@@ -1,3 +1,4 @@
+import 'package:firebase_otp_auth/features/authentication/view/otp_screen.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,7 +33,9 @@ class _AuthScreenState extends State<AuthScreen> {
           }
           if (state.otpStatus == OTPStatus.sent) {
             // Send to OTP verification
-            Navigator.pushNamed(context, '/otp_screen');
+            BlocProvider.value(
+                value: context.read<LoginBloc>(), child: const OtpScreen());
+            //Navigator.pushNamed(context, '/otp_screen');
           }
         },
         child: SafeArea(
